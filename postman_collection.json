@@ -1,0 +1,537 @@
+{
+	"info": {
+		"_postman_id": "5e28213e-43ae-4609-9b02-511a52982b7e",
+		"name": "Desafio-be",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26592249"
+	},
+	"item": [
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cpf\": \"1234567890c0\",\r\n  \"nome\": 12,\r\n  \"telefones\": [\r\n    {\r\n      \"telefone\": \"0012345678\"\r\n    },\r\n    {\r\n      \"telefone\": \"0098765432\"\r\n    }\r\n  ],\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua ABC\",\r\n    \"numero\": \"123\",\r\n    \"bairro\": \"Centro\",\r\n    \"cidade\": \"Cidade A\",\r\n    \"uf\": \"UF\",\r\n    \"cep\": \"12345-678\",\r\n    \"complemento\": \"Apartamento 101\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/cliente/store",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cliente",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/cliente/index",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cliente",
+								"index"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "mes",
+								"value": "2",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "ano",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/cliente/show/1?mes=04&ano=2024",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cliente",
+								"show",
+								"1"
+							],
+							"query": [
+								{
+									"key": "mes",
+									"value": "04"
+								},
+								{
+									"key": "ano",
+									"value": "2024"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Novo Nome do Cliente\",\r\n  \"cpf\": \"12345678900\",\r\n  \"endereco\": {\r\n    \"endereco\": \"Rua AO\",\r\n    \"numero\": \"123\",\r\n    \"bairro\": \"Centro\",\r\n    \"cidade\": \"Cidade B\",\r\n    \"uf\": \"UF\",\r\n    \"cep\": \"12345-678\",\r\n    \"complemento\": \"Apartamento 101\"\r\n  },\r\n \"telefones\": [\r\n        {\r\n            \"id\": 1,\r\n            \"numero\": \"(00) \",\r\n            \"cliente_id\": 1\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"numero\": \"(00) 9876-5432\",\r\n            \"cliente_id\": 1\r\n        }\r\n    ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/cliente/update/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cliente",
+								"update",
+								"1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/cliente/delete/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cliente",
+								"delete",
+								"1"
+							],
+							"query": [
+								{
+									"key": "i",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Produto",
+			"item": [
+				{
+					"name": "Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Produto a\",\r\n  \"lote\": 12345,\r\n  \"cd_barra\": \"67890\",\r\n  \"preco\": 10.25,\r\n  \"dt_fabricacao\": \"2024-04-17 15:30:00\",\r\n  \"dt_validade\": \"2024-08-17 15:30:00\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/produto/store",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"produto",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/produto/index",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"produto",
+								"index"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "mes",
+								"value": "2",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "ano",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/produto/show/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"produto",
+								"show",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Produto aa\",\r\n  \"lote\": 12345,\r\n  \"cd_barra\": \"67890\",\r\n  \"preco\": 10.99,\r\n  \"dt_fabricacao\": \"2024-04-17 15:30:00\",\r\n  \"dt_validade\": \"2024-08-17 15:30:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/produto/update/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"produto",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/produto/delete/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"produto",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Venda",
+			"item": [
+				{
+					"name": "Store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"quantidade\": 2,\r\n  \"cliente_id\": 1,\r\n  \"produto_id\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/venda/store",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"venda",
+								"store"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"nome\":\"Mateus\",\r\n\"email\":\"teste@teste.com\",\r\n\"senha\":\"1234abc\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/usuario/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usuario",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "hawk",
+							"hawk": [
+								{
+									"key": "algorithm",
+									"value": "sha256",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"email\":\"teste@teste.com\",\r\n\"senha\":\"1234abc\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/usuario/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usuario",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:3333",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "oat_MQ.R2hOazNsMlRQMEtfMXBzYnhTSXotd0JvU3lzeThZLUNDM0VFM3BKc3RlRDlXbEJwME0xa3FrLWN3ZUMtTTZlRTl4X3B1MHVOcURHMWJQY2VkMGNVSnhnWENETHFJT3lON1pfMVZOZjBDU3lFNy1USE5mU281ZUN6UGhhX0hRWVRoUk9RSWtCanJjUjN2OHVYSEc0OUhwbkxUUVd2eHROVXpfMHQ3R3Z6aUZkWFNBdWpEZjloSjA1NlUxam1OTFNIcU9VajFleXA0WXRYRXlFZVhvc04tSGdMRVMwT3IwMTkzUERudms5UG1WM0xiclN3RWRZaHZxaVJWblFfOXBoMjQ0ODQzMzQyMA",
+			"type": "string"
+		}
+	]
+}

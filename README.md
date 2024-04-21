@@ -37,5 +37,4 @@ npm run start
 Agora o endpoint deve estar disponível de acordo com a configuração das variáveis ​​de ambiente. O padrão é http://localhost:3333
 
 # Documentos da API
-As rotas para testar esse projeto está no arquivo postman_collection.json
-Importe o arquivo de coleção no Postman 
+As rotas para testar esse projeto está no arquivo postman_collection.json, importe o arquivo no Postman 

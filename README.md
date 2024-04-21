@@ -32,7 +32,7 @@ npm run dev
 ```
 2. Para executar em prod
 ```
-npm run build
+npm run start
 ```
 Agora o endpoint deve estar disponível de acordo com a configuração das variáveis ​​de ambiente. O padrão é http://localhost:3333
 

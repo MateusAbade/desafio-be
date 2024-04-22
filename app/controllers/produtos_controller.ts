@@ -1,9 +1,13 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import Produto from '#models/produto'
 import { DateTime } from 'luxon'
+import { createProdutoValidator, updateProdutoValidator } from '#validators/produto'
 
 export default class ProdutosController {
     async store({ request, response }: HttpContext): Promise<void> {
+        const data = request.all()
+        await createProdutoValidator.validate(data)
+        await request.validateUsing(createProdutoValidator)
         try {
             const produto = await Produto.create(request.only([
                 'nome',
@@ -44,6 +48,9 @@ export default class ProdutosController {
     }
 
     async update({ params, request, response }: HttpContext): Promise<void> {
+        const data = request.all()
+        await updateProdutoValidator.validate(data)
+        await request.validateUsing(updateProdutoValidator)
         try {
             const produto = await Produto.findOrFail(params.id);
             produto.merge(request.only([

@@ -1,16 +1,21 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import Usuario from '#models/usuario'
 import hash from '@adonisjs/core/services/hash'
+import { createUsuarioValidator } from '#validators/usuario'
 
 
 export default class UsuariosController {
+
     public async signup({ request, response }: HttpContext) {
+        const data = request.all()
+        await createUsuarioValidator.validate(data)
+        await request.validateUsing(createUsuarioValidator)
         try {
             const usuario = await Usuario.create(request.only(['nome', 'email', 'senha']))
             return response.json({
-        email: usuario.email,
-        nome: usuario.nome
-      })
+                email: usuario.email,
+                nome: usuario.nome
+            })
         } catch (error) {
             return response.status(400).json({ error: error.message })
         }

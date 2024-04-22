@@ -1,9 +1,14 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import Cliente from '#models/cliente'
 import Telefone from '#models/telefone'
+import {createClienteValidator, updateClienteValidator} from '#validators/cliente'
+
 export default class ClientesController {
 
   async store({ request, response }: HttpContext): Promise<void> {
+    const data = request.all()
+    await createClienteValidator.validate(data)
+    await request.validateUsing(createClienteValidator)
     try {
       const cliente = (await Cliente.create(request.only(['cpf', 'nome'])))
       await cliente.related('telefones').createMany(request.input('telefones'));
@@ -49,6 +54,9 @@ export default class ClientesController {
   }
 
   async update({ params, request, response }: HttpContext): Promise<void> {
+    const data = request.all()
+    await updateClienteValidator.validate(data)
+    await request.validateUsing(updateClienteValidator)
     try {
       const cliente = await Cliente.findOrFail(params.id);
       cliente.merge(request.only(['nome', 'cpf']));

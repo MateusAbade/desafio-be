@@ -2,10 +2,14 @@ import type { HttpContext } from '@adonisjs/core/http'
 import Venda from '#models/venda'
 import Produto from '#models/produto'
 import { DateTime } from 'luxon'
+import { createVendaValidator } from '#validators/venda'
 
 export default class VendasController {
     async store({ request, response }: HttpContext): Promise<void> {
         const { quantidade, produto_id, cliente_id } = request.only(['quantidade', 'produto_id', 'cliente_id'])
+        const data = request.all()
+        await createVendaValidator.validate(data)
+        await request.validateUsing(createVendaValidator)
         try {
             const produto = await Produto.findOrFail(produto_id);
             const preco_total = quantidade * produto.preco;
@@ -15,7 +19,7 @@ export default class VendasController {
                 preco_total,
                 produto_id,
                 cliente_id,
-                dt_venda: DateTime.now() 
+                dt_venda: DateTime.now()
             })
             return response.status(201).json(venda)
         } catch (error) {
